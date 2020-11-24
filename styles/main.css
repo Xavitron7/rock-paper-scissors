@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #000;
+    --rich-black: #0C1821;
+    --oxBlue: #1B2A41;
+    --charcoal: #324A5F;
+    --lav: #CCC9DC;
+}
+/*Body wide styling */
+body {
+    font-family: 'Poppins', serif;
+    background-color: var(--black);
+    color: var(--lav);
+    text-align: center;
+}
+
+#pageContainer {
+    width: 100vw;
+    height: 100vh;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling the header */
+
+header {
+    background-color: var(--rich-black);
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 1em;
+    
+}
+/* Scoreboard style*/
+#scoreboard {
+    background-color: var(--oxBlue);
+    width: 100%;
+    padding: 1em;
+
+}
+
+/* Round result style*/
+#roundResult {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1em;
+}
+
+/*Styling the bit in the button section */
+
+#playerInputForm {
+    margin: 1em 0;
+    
+}
+button {
+    width: 15em;
+    border: 0;
+    padding: 0.5rem;
+    border-radius: 40px;
+    background-color: var(--charcoal);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+button:hover {
+background-color: #445361
+}
+

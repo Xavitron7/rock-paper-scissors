@@ -8,20 +8,26 @@ function computerPlay() {
     
 }
 
-//Initial selection values. Player's is set to default list selection
-let computerSelection = computerPlay()
-let playerSelection = playerChoice.value;
+//Target elements
+const rockChoice = document.getElementById("rock");
+const paperChoice = document.getElementById("paper");
+const scissorsChoice = document.getElementById("scissors");
+const form = document.getElementById("playerInputForm");
+let playerPoints = document.getElementById("playerScore");
+let computerPoints = document.getElementById("computerScore");
+let playerPick = document.getElementById("playerChoice");
+let computerPick = document.getElementById("computerChoice");
 
-//Targeting the dropdown list player uses as an input
-let form = document.getElementById("playerInputForm");
 
-//When the submit button is pressed, run the game function
-form.addEventListener("submit", game)
+//Add event listeners. When the player clicks one of the buttons, I wantthe game to run
+rockChoice.addEventListener("click", game);
+paperChoice.addEventListener("click", game);
+scissorsChoice.addEventListener("click", game);
 
-//Testing the selection value outputs
-console.log(`Computer selection: ${computerSelection}`)
-console.log(`Player selection: ${playerSelection}`)
 
+// Declare selection variables and score
+let computerSelection;
+let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -65,21 +71,24 @@ function playRound(playerSelection, computerSelection) {
        }
 }
 
-// 
+// Runs the playRound function. The whole process starts when the player clicks rock, paper or scissors. 
 function game(event) {
-    //Prevent default action (page refresh)
-        event.preventDefault();
-        console.clear()
 
-        playerSelection = playerChoice.value;
-        computerSelection = computerPlay();
+    //the player selection is chosen based on the name of the button that was pressed, and the computer selection is generated randomly.
+
+    playerSelection = event.target.name;
+    computerSelection = computerPlay();
     
-    
-   console.log(playRound(playerSelection, computerSelection))
-   console.log("Player: " + playerSelection);
-   console.log("Computer: " + computerSelection);
-   console.log(`Score = Player ${playerScore}: ${computerScore} Computer`)
-   
+    //Then, the selections are compared with the play round function and scores are updated.  
+   playRound(playerSelection, computerSelection)
+
+   //The selections and scores are displayed on-screen (HTML is updated)
+   playerPick.innerHTML = playerSelection;
+   computerPick.innerHTML = computerSelection;
+   playerPoints.innerHTML = playerScore;
+   computerPoints.innerHTML = computerScore;
+
+   //End the game if one player reaches five
 
    if (playerScore === 5) {
        alert("Game Over! You win!");
@@ -97,4 +106,4 @@ function game(event) {
 
 
 
-// Change input form layout to 3 buttons - one for each option
+// Make the game responsive.

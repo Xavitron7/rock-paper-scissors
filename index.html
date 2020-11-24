@@ -2,17 +2,31 @@
 <html lang="en">
     <title>Rock, Paper, Scissors!</title>
     <link href="styles/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale = 1">
 </html>
 <body>
-    <form id="playerInputForm" method="GET" action="#">
-        <select name="playerChoice" id="playerChoice" size="3">
-        <option value="rock">Rock</option>
-        <option value="paper">Paper</option>
-        <option value="scissors">Scissors</option>
-        </select>
-        <button type="submit" name="submit" id="submit">Submit</button>
+    <div id="pageContainer">
+        <header>
+            <h1>Rock, Paper, Scissors!</h1>
+            <p>My first goddamn javascript game.</p>
+        </header>
+        <div id="scoreboard">
+            <h2 id="score">Score</h2>
+            <h3>Player: <span id="playerScore">0</span> - <span id="computerScore">0</span> Computer</h3>
+        </div>
+        <div id="roundResult">
+            <h3>You chose: <span id="playerChoice"></span></h3>
+            <h3>Computer chose: <span id="computerChoice"></span></h3>
+        </div>
+        <div id="playerInputForm">
+            <button name="rock" id="rock">Rock</button>
+            <button name="paper" id="paper">Paper</button>        
+            <button name="scissors" id="scissors">Scissors</button>
+        </div>
+        <div id="displayWinner"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 
