@@ -78,11 +78,16 @@ background-color: #445361
 /* Styling the victory box */
 
 div .gameOver {
-    border: 3px solid red;
-    background-color: white;
+    border: 3px solid var(--rich-black);
+    background-color: var(--lav);
     color: black;
     width: 100vw;
     padding: 1rem;
+}
+
+#winnerMessage {
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* Utility class. Mainly for the winner box */
