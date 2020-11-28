@@ -17,12 +17,15 @@ let playerPoints = document.getElementById("playerScore");
 let computerPoints = document.getElementById("computerScore");
 let playerPick = document.getElementById("playerChoice");
 let computerPick = document.getElementById("computerChoice");
+let winnerBox = document.querySelector("#displayWinner")
+let newBox = document.querySelector("#displayWinner");
 
 
-//Add event listeners. When the player clicks one of the buttons, I wantthe game to run
+//Add event listeners. When the player clicks one of the buttons, I want the game to run
 rockChoice.addEventListener("click", game);
 paperChoice.addEventListener("click", game);
 scissorsChoice.addEventListener("click", game);
+newBox.addEventListener("click", reset);
 
 
 // Declare selection variables and score
@@ -71,8 +74,12 @@ function playRound(playerSelection, computerSelection) {
        }
 }
 
-// Runs the playRound function. The whole process starts when the player clicks rock, paper or scissors. 
+// The whole process starts when the player clicks rock, paper or scissors. 
 function game(event) {
+    //Check that this is a new game. If there's a score of 5, don't play a new round
+    if (playerScore === 5 || computerScore === 5) {
+        return
+    }
 
     //the player selection is chosen based on the name of the button that was pressed, and the computer selection is generated randomly.
 
@@ -88,22 +95,35 @@ function game(event) {
    playerPoints.innerHTML = playerScore;
    computerPoints.innerHTML = computerScore;
 
-   //End the game if one player reaches five
+   //End the game if one player reaches five. Pass the win/loss message to the function that displays the result
 
-   if (playerScore === 5) {
-       alert("Game Over! You win!");
-       playerScore = 0;
-       computerScore = 0;
+   if (playerScore === 5) {      
+        displayWinner("Game Over! You win!")
     }
 
     if (computerScore === 5) {
-        alert("Game Over! You lose!");
-        playerScore = 0;
-       computerScore = 0;
+        displayWinner("Game Over! You lose!")
     }
 
 }
 
+//Displays the winner message and new game button.
+function displayWinner(message) {
+    //Makes the winner box div visible
+winnerBox.classList.replace("hide", "gameOver");
+//Targets the paragraph in the displayWinner div
+let para = document.querySelector("#winnerMessage");
 
+//Then replaces the text inside.
+para.innerHTML = message
+}
 
-// Make the game responsive.
+// Resets scores to zero and hides the winner box. Ready for a new game.
+function reset() {
+    playerScore = 0;
+    computerScore = 0;
+    playerPoints.innerHTML = playerScore;
+    computerPoints.innerHTML = computerScore;
+
+    winnerBox.classList.replace("gameOver", "hide")
+}

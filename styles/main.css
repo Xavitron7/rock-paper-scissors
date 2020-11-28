@@ -75,13 +75,29 @@ button:hover {
 background-color: #445361
 }
 
-@media only screen and (max-width: 375px) {
+/* Styling the victory box */
+
+div .gameOver {
+    border: 3px solid red;
+    background-color: white;
+    color: black;
+    width: 100vw;
+    padding: 1rem;
+}
+
+/* Utility class. Mainly for the winner box */
+.hide {
+    display: none;
+}
+
+
+@media only screen and (max-width: 414px) {
     
     #playerInputForm {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 15vh;;
+        min-height: 17vh;
     }
 
     * {
